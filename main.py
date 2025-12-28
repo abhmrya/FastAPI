@@ -30,13 +30,15 @@ app = FastAPI()
 #     return {'data':{'3','1','2'}}
 
 class Blog(BaseModel):
-    pass
+    title:str
+    body:str
+    published_at:Optional[bool]
     
 
 @app.post('/blog')
 def create_blog(request:Blog):
-    return request
-    return {'data': 'blog is created'}
+    # return request
+    return {'data': f'blog is created with title as {request.title}'}
 
 # @app.post('/blog/{id}')
 # def create_blog(id):
