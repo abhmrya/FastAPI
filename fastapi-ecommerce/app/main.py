@@ -65,6 +65,7 @@ def list_products(
                 status_code=404,
                 detail=f"No product found matching title = {title}"
             )
+        # if sort_by_price:
 
     return {
         "total": len(products),
