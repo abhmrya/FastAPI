@@ -2,3 +2,17 @@
 fastapi[all]==0.109.0
 uvicorn[standard]==0.27.0
 gunicorn==21.2.0
+
+
+
+#forcefull kill terminal
+netstat -ano | findstr :8000
+
+taskkill /IM python.exe /F
+
+or 
+
+taskkill /PID 11560 /F
+taskkill /PID 19436 /F
+taskkill /PID 9960 /F
+taskkill /PID 4696 /F
