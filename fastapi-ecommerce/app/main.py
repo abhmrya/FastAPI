@@ -1,5 +1,6 @@
 from fastapi import FastAPI,HTTPException,Query
 from service.products import *
+from fastapi.responses import JSONResponse
 app = FastAPI()
 
 @app.get("/")
@@ -71,3 +72,23 @@ def list_products(
         "total": len(products),
         "items": products
     }
+
+from fastapi.responses import HTMLResponse
+@app.get("/hello/")
+async def hello():
+ ret='''
+<html>
+<body>
+<h2>Hello World!</h2>
+<h2> My name is Abhay</h2>
+</body>
+</html>
+'''
+ return HTMLResponse(content=ret)
+
+@app.post("/cookie/")
+def create_cookie():
+    content = {"message": "cookie set"}
+    response = JSONResponse(content=content)
+    response.set_cookie(key="username", value="admin")
+    return response

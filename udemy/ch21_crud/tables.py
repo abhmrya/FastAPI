@@ -10,7 +10,6 @@ users = Table(
     Column("id", Integer, primary_key=True),
     Column("name", String(50), nullable=False),
     Column("email", String, nullable=False, unique=True),
-    Column("phone",Integer,nullable=False,unique=True)
 )
 
 posts = Table(
@@ -25,7 +24,3 @@ posts = Table(
 # create table in database
 def create_tables():
     metadata.create_all(engine)
-
-# drop table in database
-# def drop_tables():
-#     metadata.drop_all(engine)

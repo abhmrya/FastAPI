@@ -20,15 +20,15 @@ class Product(BaseModel):
 # async def create_product(new_product:Product):
 #     return new_product
 
-# @app.post("/product")
-# async def create_product(new_product:Product):
-#     print(Product)
-#     print(new_product)
-#     print(new_product.id)
-#     print(new_product.name)
-#     print(new_product.price)
-#     print(new_product.stock)
-#     return new_product
+@app.post("/product")
+async def create_product(new_product:Product):
+    print(Product)
+    print(new_product)
+    print(new_product.id)
+    print(new_product.name)
+    print(new_product.price)
+    print(new_product.stock)
+    return new_product
 
 # @app.post("/product")
 # async def create_product(new_product:Product):
@@ -43,6 +43,6 @@ class Product(BaseModel):
 #     return {"product_id":product_id,"new_updated_product":new_updated_product}
 
 ## Adding Query Parameter
-@app.put("/products/{product_id}")
-async def update_product(product_id:int,new_updated_product:Product,discount:float | None=None):
-    return {"product_id":product_id,"new_updated_product":new_updated_product}
+# @app.put("/products/{product_id}")
+# async def update_product(product_id:int,new_updated_product:Product,discount:float | None=None):
+#     return {"product_id":product_id,"new_updated_product":new_updated_product}

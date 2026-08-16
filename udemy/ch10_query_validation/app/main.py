@@ -12,7 +12,7 @@ PRODUCTS=[
       "description": "Noise-cancelling over-ear"}
 ]
 
-# #Basic Query parameter
+#Basic Query parameter
 # @app.get("/products")
 # async def get_product(serach:str | None=None):
 #     if serach:
@@ -25,7 +25,7 @@ PRODUCTS=[
 #     return PRODUCTS
 
 
-# validation without Anotated
+# # validation without Anotated
 # @app.get("/products")
 # async def get_product(serach:str | None=Query(default=None,max_length=5)):
 #     if serach:
@@ -37,7 +37,7 @@ PRODUCTS=[
 #         return filtered_product
 #     return PRODUCTS
 
-# validation with Annotated
+# # validation with Annotated
 # @app.get("/products")
 # async def get_product(serach:Annotated[str | None,Query(max_length=5,min_length=3)]=None):
 #     if serach:
@@ -49,7 +49,7 @@ PRODUCTS=[
 #         return filtered_product
 #     return PRODUCTS
 
-# validation with Annotated
+# # validation with Annotated
 # @app.get("/products")
 # async def get_product(serach:Annotated[str | None,Query(min_length=3,pattern="^[a-z]+$")]=None):
 #     if serach:
@@ -61,7 +61,7 @@ PRODUCTS=[
 #         return filtered_product
 #     return PRODUCTS
 
-## Multiple Search Terms (List)
+# ## Multiple Search Terms (List)
 # @app.get("/products")
 # async def get_products(serch:Annotated[list[str] | None,Query()]):
 #     if serch:
@@ -74,16 +74,16 @@ PRODUCTS=[
 #     return PRODUCTS
     
 # ## Alias parameters
-# @app.get("/products")
-# async def get_products(serch:Annotated[str | None,Query(alias="Q")]):
-#     if serch:
-#         filtered_products=[]
-#         for product in PRODUCTS:
-#             for s in serch:
-#                 if s.lower() in product["title"].lower():
-#                     filtered_products.append(product)
-#         return filtered_products
-#     return PRODUCTS
+@app.get("/products")
+async def get_products(serch:Annotated[str | None,Query(alias="Q")]):
+    if serch:
+        filtered_products=[]
+        for product in PRODUCTS:
+            for s in serch:
+                if s.lower() in product["title"].lower():
+                    filtered_products.append(product)
+        return filtered_products
+    return PRODUCTS
 
 ## Adding  MEtadata'## Alias parameters
 # @app.get("/products")
@@ -98,13 +98,13 @@ PRODUCTS=[
 #     return PRODUCTS
 
 ## Custom  validation
-def  check_valid_id(id:str):
-    if not id.startswith("lap"):
-        raise ValueError("ID must start with 'lap")
-    return id
+# def  check_valid_id(id:str):
+#     if not id.startswith("lap"):
+#         raise ValueError("ID must start with 'lap")
+#     return id
 
-@app.get("/products")
-async def get_products(id:Annotated[str | None,AfterValidator(check_valid_id)]=None):
-    if id:
-        return {"id":id,"message":"VAlid product ID "}
-    return {"message":"no ID provided"}
+# @app.get("/products")
+# async def get_products(id:Annotated[str | None,AfterValidator(check_valid_id)]=None):
+#     if id:
+#         return {"id":id,"message":"VAlid product ID "}
+#     return {"message":"no ID provided"}

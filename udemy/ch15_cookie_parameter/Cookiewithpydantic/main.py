@@ -24,7 +24,7 @@ def get_product_cookies(
 
 @app.get("/products/recommendations")
 async def get_recommendations(
-    cookies: Annotated[ProductCookies, Depends(get_product_cookies)]
+    # cookies: Annotated[ProductCookies, Depends(get_product_cookies)]
 ):
     response = {"session_id": cookies.session_id}
 
